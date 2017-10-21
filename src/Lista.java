@@ -1,3 +1,5 @@
+//Author: Jose Eduardo Sandoval Polanco
+
 import javax.swing.ImageIcon;
 
 class Lista {
