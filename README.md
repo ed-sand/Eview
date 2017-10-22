@@ -18,3 +18,5 @@ INSTRUCCIONES:
 TODO: Crear un paquete jar para la distribucion en forma binaria.
 
 TODO: Agregar instrucciones para crear el jar mencionado.
+
+TODO: Cargar las imagenes JIT (Justo In Time) para no desperdiciar recursos.
