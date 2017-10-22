@@ -36,6 +36,9 @@ class ImageViewerFrame extends JFrame {
   private JPanel panel;
  	private JLabel label;
 	private Lista lista;
+	private JMenu menu;
+	private JMenuBar menuBar;
+	private	JMenuItem openItem;
 	private Imagen inicio_de_lista, imagen_actual;
   private JFileChooser chooser;
   private static final int DEFAULT_WIDTH = 1366;
@@ -60,9 +63,9 @@ class ImageViewerFrame extends JFrame {
 		image_dir = new File("../../../images/");
 		chooser = new JFileChooser();
 		lista = new Lista();
-		JMenu menu = new JMenu("Archivo");
-		JMenuBar menuBar = new JMenuBar();
-		JMenuItem openItem = new JMenuItem("Abrir");
+		menu = new JMenu("Archivo");
+		menuBar = new JMenuBar();
+		openItem = new JMenuItem("Abrir");
 		btn_next = new JButton("Sig");
 		btn_back = new JButton("Atras");
 	  panel = new JPanel() {
