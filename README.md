@@ -7,6 +7,7 @@ Uso la linea de comandos (Ubuntu Linux 17.04 x64) para compilar y ejecutar el pr
 
 INSTRUCCIONES:
 
+LINUX
 
     git clone https://github.com/ed-sand/Eview.git
 
