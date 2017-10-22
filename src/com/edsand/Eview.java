@@ -1,5 +1,7 @@
 //Author: Jose Eduardo Sandoval Polanco
 
+package com.edsand;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
