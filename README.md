@@ -6,13 +6,13 @@ Uso la linea de comandos (Ubuntu Linux 17.04 x64) para compilar y ejecutar el pr
 INSTRUCCIONES:
 
 
-  git clone https://github.com/ed-sand/Eview.git
+    git clone https://github.com/ed-sand/Eview.git
 
-  cd Eview/src/com/edsand/
+    cd Eview/src/com/edsand/
 
-  javac Eview.java
+    javac Eview.java
 
-  java Eview
+    java Eview
 
 
 TODO: Crear un paquete jar para la distribucion en forma binaria.
