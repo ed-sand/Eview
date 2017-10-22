@@ -39,6 +39,7 @@ class ImageViewerFrame extends JFrame {
 	private JMenu menu;
 	private JMenuBar menuBar;
 	private	JMenuItem openItem;
+	private JMenuItem exitItem;
 	private Imagen inicio_de_lista, imagen_actual;
   private JFileChooser chooser;
   private static final int DEFAULT_WIDTH = 1366;
@@ -48,6 +49,22 @@ class ImageViewerFrame extends JFrame {
 		setTitle("Eview");
 		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		
+		declareVariables();
+		getImagenes();
+    setLabelIcons();
+    setLabelBounds();
+    addComponets();
+    addActionListeners();
+	}
+	
+	public void getImagenes() {
+		for (File f: image_dir.listFiles()) {
+			ImageIcon icon = new ImageIcon(f.getPath());
+			lista.meter(new Imagen(icon));
+		}
+	}
+	
+	public void declareVariables() {
 		label = new JLabel();
 		img_ant = new JLabel();
 		img_sig = new JLabel();
@@ -68,6 +85,7 @@ class ImageViewerFrame extends JFrame {
 		openItem = new JMenuItem("Abrir");
 		btn_next = new JButton("Sig");
 		btn_back = new JButton("Atras");
+		exitItem = new JMenuItem("Exit");
 	  panel = new JPanel() {
 		  @Override
 		  public void paintComponent(Graphics g) {
@@ -77,51 +95,9 @@ class ImageViewerFrame extends JFrame {
 			  g.fillRect(1366/2-65, 722-215, 130, 107);
 		  }
 		};
-		
-		for (File f: image_dir.listFiles()) {
-			ImageIcon icon = new ImageIcon(f.getPath());
-			lista.meter(new Imagen(icon));
-		}
-    
-    setImagenes();
-    
-    setLabelBounds();
-		
-    addComponets();
-		
-    openItem.addActionListener(new ActionListener() {
-		  public void actionPerformed(ActionEvent event) {
-				int result = chooser.showOpenDialog(null);
-        if (result == JFileChooser.APPROVE_OPTION) {
-        	String name = chooser.getSelectedFile().getPath();
-          lista.meter(new Imagen(new ImageIcon(name)));
-				}
-			}
-    });
-
-		JMenuItem exitItem = new JMenuItem("Exit");
-		menu.add(exitItem);
-		exitItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				System.exit(0);
-			}
-		});
-		
-		btn_next.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				if (imagen_actual.getSig() != null) move_next();
-			}
-		});
-		
-		btn_back.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				if (imagen_actual.getAnt() != null) move_back();
-			}
-		});
-		
 	}
   
-  public void setImagenes() {
+  public void setLabelIcons() {
     label.setIcon(lista.getInicio().getImagen());
     imagen_actual = lista.getInicio();
     img_act.setIcon(resize_icon(imagen_actual.getImagen()));
@@ -214,5 +190,36 @@ class ImageViewerFrame extends JFrame {
 	public ImageIcon resize_icon(ImageIcon image) {
 		Image img = image.getImage().getScaledInstance(100, 77, Image.SCALE_SMOOTH);
 		return new ImageIcon(img);
+	}
+	
+	public void addActionListeners() {
+		openItem.addActionListener(new ActionListener() {
+		  public void actionPerformed(ActionEvent event) {
+				int result = chooser.showOpenDialog(null);
+        if (result == JFileChooser.APPROVE_OPTION) {
+        	String name = chooser.getSelectedFile().getPath();
+          lista.meter(new Imagen(new ImageIcon(name)));
+				}
+			}
+    });
+
+		menu.add(exitItem);
+		exitItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				System.exit(0);
+			}
+		});
+		
+		btn_next.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				if (imagen_actual.getSig() != null) move_next();
+			}
+		});
+		
+		btn_back.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				if (imagen_actual.getAnt() != null) move_back();
+			}
+		});
 	}
 }
