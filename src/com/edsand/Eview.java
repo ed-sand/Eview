@@ -33,7 +33,7 @@ class ImageViewerFrame extends JFrame {
 		img_sigx4 = new JLabel();
 		img_sigx5 = new JLabel();
 		img_antx5 = new JLabel();
-    chooser = new File("../../../images")
+		image_dir = new File("../../../images/");
 		chooser = new JFileChooser();
 		lista = new Lista();
 		JMenu menu = new JMenu("Archivo");
