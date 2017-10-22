@@ -1,5 +1,6 @@
 //Author: Jose Eduardo Sandoval Polanco
 
+package com.edsand;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -76,7 +77,7 @@ class ImageViewerFrame extends JFrame {
     lblSig4 = new JLabel();
     lblSig5 = new JLabel();
     lblAnt5 = new JLabel();
-    image_dir = new File("../../../images/");
+    image_dir = new File("com/images/");
     chooser = new JFileChooser();
     lista = new Lista();
     menu = new JMenu("Archivo");
