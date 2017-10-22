@@ -186,7 +186,7 @@ class ImageViewerFrame extends JFrame {
   private JLabel img_act;
   private JLabel img_ant;
 	private JLabel img_sig;
-  private File image_dir = new File("images/");
+  private File image_dir = new File("../../images");
   private JButton btn_next;
   private JButton btn_back;
   private JPanel panel;
