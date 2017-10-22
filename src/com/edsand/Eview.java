@@ -8,8 +8,8 @@ import java.io.*;
 import javax.swing.*;
 
 public class Eview {
-	public static void main(String[] args) {
-		JFrame frame = new ImageViewerFrame();
+  public static void main(String[] args) {
+    JFrame frame = new ImageViewerFrame();
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setVisible(true);
 	}
@@ -41,20 +41,21 @@ class ImageViewerFrame extends JFrame {
 		JMenuItem openItem = new JMenuItem("Abrir");
 		btn_next = new JButton("Sig");
 		btn_back = new JButton("Atras");
-		panel = new JPanel() {
-			@Override
-			public void paintComponent(Graphics g) {
-				g.setColor(Color.lightGray);
-				g.fillRect(0, 0, 1366, 722);
-				g.setColor(Color.white);
-				g.fillRect(1366/2-65, 722-215, 130, 107);
-			}
+	  panel = new JPanel() {
+		  @Override
+		  public void paintComponent(Graphics g) {
+		    g.setColor(Color.lightGray);
+        g.fillRect(0, 0, 1366, 722);
+			  g.setColor(Color.white);
+			  g.fillRect(1366/2-65, 722-215, 130, 107);
+		  }
 		};
 		
 		for (File f: image_dir.listFiles()) {
 			ImageIcon icon = new ImageIcon(f.getPath());
 			lista.meter(new Imagen(icon));
 		}
+    
 		label.setIcon(lista.getInicio().getImagen());
     imagen_actual = lista.getInicio();
     img_act.setIcon(resize_icon(imagen_actual.getImagen()));
@@ -107,16 +108,15 @@ class ImageViewerFrame extends JFrame {
     this.getContentPane().add(panel);
 		menu.add(openItem);
 		
-		openItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
+    openItem.addActionListener(new ActionListener() {
+		  public void actionPerformed(ActionEvent event) {
 				int result = chooser.showOpenDialog(null);
-
         if (result == JFileChooser.APPROVE_OPTION) {
         	String name = chooser.getSelectedFile().getPath();
           lista.meter(new Imagen(new ImageIcon(name)));
 				}
 			}
-		});
+    });
 
 		JMenuItem exitItem = new JMenuItem("Exit");
 		menu.add(exitItem);
@@ -141,19 +141,19 @@ class ImageViewerFrame extends JFrame {
 	}
 	
 	public void move_next() {
-			label.setIcon(imagen_actual.getSig().getImagen());
-			img_sig.setIcon(resize_icon(imagen_actual.getSig().getSig().getImagen()));
-			img_ant.setIcon(resize_icon(imagen_actual.getImagen()));
-			img_act.setIcon(resize_icon(imagen_actual.getSig().getImagen()));
-			img_ant_ant.setIcon(resize_icon(imagen_actual.getAnt().getImagen()));
-    	img_sig_sig.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getImagen()));
-    	img_sigx3.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getSig().getImagen()));
-    	img_sigx4.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getSig().getSig().getImagen()));
-    	img_antx3.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getImagen()));
-    	img_antx4.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getImagen()));
-    	img_antx5.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getAnt().getImagen()));
-    	img_sigx5.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getSig().getSig().getSig().getImagen()));
-			imagen_actual = imagen_actual.getSig();
+    label.setIcon(imagen_actual.getSig().getImagen());
+		img_sig.setIcon(resize_icon(imagen_actual.getSig().getSig().getImagen()));
+		img_ant.setIcon(resize_icon(imagen_actual.getImagen()));
+		img_act.setIcon(resize_icon(imagen_actual.getSig().getImagen()));
+		img_ant_ant.setIcon(resize_icon(imagen_actual.getAnt().getImagen()));
+    img_sig_sig.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getImagen()));
+    img_sigx3.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getSig().getImagen()));
+    img_sigx4.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getSig().getSig().getImagen()));
+    img_antx3.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getImagen()));
+    img_antx4.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getImagen()));
+    img_antx5.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getAnt().getImagen()));
+    img_sigx5.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getSig().getSig().getSig().getImagen()));
+		imagen_actual = imagen_actual.getSig();
 	}
 		
 	public void move_back() {
