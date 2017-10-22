@@ -47,11 +47,15 @@ class ImageViewerFrame extends JFrame {
     setTitle("Eview");
     setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
     
-    declareVariables();
+    setVariables();
+    JButton Buttons[] = {btn_back, btn_next};
+    JLabel Labels[] = {lblBigImage, lblAct, 
+                       lblAnt1,     lblAnt2,  lblAnt3, lblAnt4, lblAnt5,
+                       lblSig1,     lblSig2,  lblSig3, lblSig4,  lblSig5};
     getImagenes();
-    setLabelIcons();
+    setLabelIcons(Labels);
     setLabelBounds();
-    addComponets();
+    addComponets(Buttons, Labels);
     addActionListeners();
   }
   
@@ -63,7 +67,7 @@ class ImageViewerFrame extends JFrame {
     imagen_actual = lista.getInicio();
   }
   
-  public void declareVariables() {
+  public void setVariables() {
     lblBigImage = new JLabel();
     lblAnt1 = new JLabel();
     lblSig1 = new JLabel();
@@ -97,22 +101,16 @@ class ImageViewerFrame extends JFrame {
     };
   }
   
-  public void setLabelIcons() {
-    lblBigImage.setIcon(imagen_actual.getImagen());
+  public void setLabelIcons(JLabel Labels[]) {
+    Labels[0].setIcon(imagen_actual.getImagen());
     
-    lblAct.setIcon(resize(imagen_actual.getImagen()));
+    Labels[1].setIcon(resize(imagen_actual.getImagen()));
     
-    lblAnt1.setIcon(resize(getAnt(imagen_actual, 1)));
-    lblAnt2.setIcon(resize(getAnt(imagen_actual, 2)));
-    lblAnt3.setIcon(resize(getAnt(imagen_actual, 3)));
-    lblAnt4.setIcon(resize(getAnt(imagen_actual, 4)));
-    lblAnt5.setIcon(resize(getAnt(imagen_actual, 5)));
+    for (int i = 2; i < 7; i++) 
+      Labels[i].setIcon(resize(getAnt(imagen_actual, i-1)));
     
-    lblSig1.setIcon(resize(getSig(imagen_actual, 1)));
-    lblSig2.setIcon(resize(getSig(imagen_actual, 2)));
-    lblSig3.setIcon(resize(getSig(imagen_actual, 3)));
-    lblSig4.setIcon(resize(getSig(imagen_actual, 4)));
-    lblSig5.setIcon(resize(getSig(imagen_actual, 5)));
+    for (int i = 7; i < Labels.length; i++) 
+      Labels[i].setIcon(resize(getSig(imagen_actual, i-6)));
   }
   
   public ImageIcon getAnt(Imagen imagen, int recorrido) {
@@ -145,14 +143,9 @@ class ImageViewerFrame extends JFrame {
     lblAnt5.setBounds(act_x - 600, act_y, 100, 77);
   }
   
-  public void addComponets() {
+  public void addComponets(JButton Buttons[], JLabel Labels[]) {
     menuBar.add(menu);
     setJMenuBar(menuBar);
-    
-    JButton Buttons[] = {btn_next, btn_back};
-    JLabel Labels[] = {lblAnt5,  lblSig5,  lblBigImage, lblAnt1,
-                       lblSig1,  lblAct,   lblAnt2,     lblSig2, 
-                       lblSig3,  lblSig4,  lblAnt3,     lblAnt4};
     
     for (JButton button: Buttons) panel.add(button);
     for (JLabel label: Labels) panel.add(label);
