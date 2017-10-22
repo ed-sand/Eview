@@ -28,20 +28,18 @@ public class Eview {
 
 
 class ImageViewerFrame extends JFrame {
-  private JLabel img_act;
-  private JLabel img_antx5, img_antx3, img_antx4, img_ant_ant, img_ant;
-  private JLabel img_sigx5, img_sigx3, img_sigx4, img_sig_sig, img_sig;
-  private File image_dir;
-  private JButton btn_next, btn_back;
   private JPanel panel;
-  private JLabel label;
-  private Lista lista;
+  private JButton btn_next, btn_back;
+  private JLabel lblBigImage, lblAct;
   private JMenu menu;
   private JMenuBar menuBar;
-  private JMenuItem openItem;
-  private JMenuItem exitItem;
-  private Imagen inicio_de_lista, imagen_actual;
+  private JMenuItem openItem, exitItem;
+  private JLabel lblAnt1, lblAnt2, lblAnt3, lblAnt4, lblAnt5;
+  private JLabel lblSig1, lblSig2, lblSig3, lblSig4, lblSig5;
+  private File image_dir;
   private JFileChooser chooser;
+  private Imagen imagen_actual;
+  private Lista lista;
   private static final int DEFAULT_WIDTH = 1366;
   private static final int DEFAULT_HEIGHT = 722;
   
@@ -66,18 +64,18 @@ class ImageViewerFrame extends JFrame {
   }
   
   public void declareVariables() {
-    label = new JLabel();
-    img_ant = new JLabel();
-    img_sig = new JLabel();
-    img_act = new JLabel();
-    img_ant_ant = new JLabel();
-    img_sig_sig = new JLabel();
-    img_antx3 = new JLabel();
-    img_antx4 = new JLabel();
-    img_sigx3 = new JLabel();
-    img_sigx4 = new JLabel();
-    img_sigx5 = new JLabel();
-    img_antx5 = new JLabel();
+    lblBigImage = new JLabel();
+    lblAnt1 = new JLabel();
+    lblSig1 = new JLabel();
+    lblAct = new JLabel();
+    lblAnt2 = new JLabel();
+    lblSig2 = new JLabel();
+    lblAnt3 = new JLabel();
+    lblAnt4 = new JLabel();
+    lblSig3 = new JLabel();
+    lblSig4 = new JLabel();
+    lblSig5 = new JLabel();
+    lblAnt5 = new JLabel();
     image_dir = new File("../../../images/");
     chooser = new JFileChooser();
     lista = new Lista();
@@ -87,6 +85,7 @@ class ImageViewerFrame extends JFrame {
     btn_next = new JButton("Sig");
     btn_back = new JButton("Atras");
     exitItem = new JMenuItem("Exit");
+    chooser.setCurrentDirectory(new File("."));
     panel = new JPanel() {
       @Override
       public void paintComponent(Graphics g) {
@@ -99,31 +98,31 @@ class ImageViewerFrame extends JFrame {
   }
   
   public void setLabelIcons() {
-    label.setIcon(imagen_actual.getImagen());
+    lblBigImage.setIcon(imagen_actual.getImagen());
     
-    img_act.setIcon(resize_icon(imagen_actual.getImagen()));
+    lblAct.setIcon(resize(imagen_actual.getImagen()));
     
-    img_ant.setIcon(resize_icon(getAntX(imagen_actual, 1)));
-    img_ant_ant.setIcon(resize_icon(getAntX(imagen_actual, 2)));
-    img_antx3.setIcon(resize_icon(getAntX(imagen_actual, 3)));
-    img_antx4.setIcon(resize_icon(getAntX(imagen_actual, 4)));
-    img_antx5.setIcon(resize_icon(getAntX(imagen_actual, 5)));
+    lblAnt1.setIcon(resize(getAnt(imagen_actual, 1)));
+    lblAnt2.setIcon(resize(getAnt(imagen_actual, 2)));
+    lblAnt3.setIcon(resize(getAnt(imagen_actual, 3)));
+    lblAnt4.setIcon(resize(getAnt(imagen_actual, 4)));
+    lblAnt5.setIcon(resize(getAnt(imagen_actual, 5)));
     
-    img_sig.setIcon(resize_icon(getSigX(imagen_actual, 1)));
-    img_sig_sig.setIcon(resize_icon(getSigX(imagen_actual, 2)));
-    img_sigx3.setIcon(resize_icon(getSigX(imagen_actual, 3)));
-    img_sigx4.setIcon(resize_icon(getSigX(imagen_actual, 4)));
-    img_sigx5.setIcon(resize_icon(getSigX(imagen_actual, 5)));
+    lblSig1.setIcon(resize(getSig(imagen_actual, 1)));
+    lblSig2.setIcon(resize(getSig(imagen_actual, 2)));
+    lblSig3.setIcon(resize(getSig(imagen_actual, 3)));
+    lblSig4.setIcon(resize(getSig(imagen_actual, 4)));
+    lblSig5.setIcon(resize(getSig(imagen_actual, 5)));
   }
   
-  public ImageIcon getAntX(Imagen imagen, int recorrido) {
+  public ImageIcon getAnt(Imagen imagen, int recorrido) {
     if (recorrido == 0) return imagen.getImagen();
-    return getAntX(imagen.getAnt(), --recorrido);
+    return getAnt(imagen.getAnt(), --recorrido);
   }
   
-  public ImageIcon getSigX(Imagen imagen, int recorrido) {
+  public ImageIcon getSig(Imagen imagen, int recorrido) {
     if (recorrido == 0) return imagen.getImagen();
-    return getSigX(imagen.getSig(), --recorrido);
+    return getSig(imagen.getSig(), --recorrido);
   }
   
   public void setLabelBounds() {
@@ -132,83 +131,77 @@ class ImageViewerFrame extends JFrame {
     int act_y = 722-200;
     btn_back.setBounds(1366/2-110, 630, 100, 50);
     btn_next.setBounds(1366/2+10, 630, 100, 50);
-    label.setBounds((1366-600)/2, 30, 600, 462);
-    img_ant.setBounds(act_x - 120, act_y, 100, 77);
-    img_sig.setBounds(act_x + 120, act_y, 100, 77);
-    img_act.setBounds(act_x, act_y, 100, 77);
-    img_ant_ant.setBounds(act_x - 240, act_y, 100, 77);
-    img_sig_sig.setBounds(act_x + 240, act_y, 100, 77);
-    img_sigx3.setBounds(act_x + 360, act_y, 100, 77);
-    img_antx3.setBounds(act_x - 360, act_y, 100, 77);
-    img_sigx4.setBounds(act_x + 480, act_y, 100, 77);
-    img_antx4.setBounds(act_x - 480, act_y, 100, 77);
-    img_sigx5.setBounds(act_x + 600, act_y, 100, 77);
-    img_antx5.setBounds(act_x - 600, act_y, 100, 77);
+    lblBigImage.setBounds((1366-600)/2, 30, 600, 462);
+    lblAnt1.setBounds(act_x - 120, act_y, 100, 77);
+    lblSig1.setBounds(act_x + 120, act_y, 100, 77);
+    lblAct.setBounds(act_x, act_y, 100, 77);
+    lblAnt2.setBounds(act_x - 240, act_y, 100, 77);
+    lblSig2.setBounds(act_x + 240, act_y, 100, 77);
+    lblSig3.setBounds(act_x + 360, act_y, 100, 77);
+    lblAnt3.setBounds(act_x - 360, act_y, 100, 77);
+    lblSig4.setBounds(act_x + 480, act_y, 100, 77);
+    lblAnt4.setBounds(act_x - 480, act_y, 100, 77);
+    lblSig5.setBounds(act_x + 600, act_y, 100, 77);
+    lblAnt5.setBounds(act_x - 600, act_y, 100, 77);
   }
   
   public void addComponets() {
     menuBar.add(menu);
     setJMenuBar(menuBar);
-    chooser.setCurrentDirectory(new File("."));
-    panel.add(btn_next);
-    panel.add(btn_back);
-    panel.add(label);
-    panel.add(img_ant);
-    panel.add(img_sig);
-    panel.add(img_act);
-    panel.add(img_ant_ant);
-    panel.add(img_sig_sig);
-    panel.add(img_sigx3);
-    panel.add(img_sigx4);
-    panel.add(img_antx3);
-    panel.add(img_antx4);
-    panel.add(img_antx5);
-    panel.add(img_sigx5);
-    this.getContentPane().add(panel);
+    
+    JButton Buttons[] = {btn_next, btn_back};
+    JLabel Labels[] = {lblAnt5,  lblSig5,  lblBigImage, lblAnt1,
+                       lblSig1,  lblAct,   lblAnt2,     lblSig2, 
+                       lblSig3,  lblSig4,  lblAnt3,     lblAnt4};
+    
+    for (JButton button: Buttons) panel.add(button);
+    for (JLabel label: Labels) panel.add(label);
+      
     menu.add(openItem);
+    this.getContentPane().add(panel);
   }
   
   public void move_next() {
-    label.setIcon(getSigX(imagen_actual, 1));
+    lblBigImage.setIcon(getSig(imagen_actual, 1));
     
-    img_act.setIcon(resize_icon(getSigX(imagen_actual, 1)));
+    lblAct.setIcon(resize(getSig(imagen_actual, 1)));
     
-    img_ant.setIcon(resize_icon(imagen_actual.getImagen()));
-    img_ant_ant.setIcon(resize_icon(getAntX(imagen_actual, 1)));
-    img_antx3.setIcon(resize_icon(getAntX(imagen_actual, 2)));
-    img_antx4.setIcon(resize_icon(getAntX(imagen_actual, 3)));
-    img_antx5.setIcon(resize_icon(getAntX(imagen_actual, 4)));
+    lblAnt1.setIcon(resize(imagen_actual.getImagen()));
+    lblAnt2.setIcon(resize(getAnt(imagen_actual, 1)));
+    lblAnt3.setIcon(resize(getAnt(imagen_actual, 2)));
+    lblAnt4.setIcon(resize(getAnt(imagen_actual, 3)));
+    lblAnt5.setIcon(resize(getAnt(imagen_actual, 4)));
     
-    img_sig.setIcon(resize_icon(getSigX(imagen_actual, 2)));
-    img_sig_sig.setIcon(resize_icon(getSigX(imagen_actual, 3)));
-    img_sigx3.setIcon(resize_icon(getSigX(imagen_actual, 4)));
-    img_sigx4.setIcon(resize_icon(getSigX(imagen_actual, 5)));
-    img_sigx5.setIcon(resize_icon(getSigX(imagen_actual, 6)));
+    lblSig1.setIcon(resize(getSig(imagen_actual, 2)));
+    lblSig2.setIcon(resize(getSig(imagen_actual, 3)));
+    lblSig3.setIcon(resize(getSig(imagen_actual, 4)));
+    lblSig4.setIcon(resize(getSig(imagen_actual, 5)));
+    lblSig5.setIcon(resize(getSig(imagen_actual, 6)));
     
     imagen_actual = imagen_actual.getSig();
   }
     
   public void move_back() {
-    label.setIcon(getAntX(imagen_actual, 1));
+    lblBigImage.setIcon(getAnt(imagen_actual, 1));
     
-    img_act.setIcon(resize_icon(getAntX(imagen_actual, 1)));
+    lblAct.setIcon(resize(getAnt(imagen_actual, 1)));
     
-    img_ant.setIcon(resize_icon(getAntX(imagen_actual, 2)));
-    img_ant_ant.setIcon(resize_icon(getAntX(imagen_actual, 3)));
-    img_antx3.setIcon(resize_icon(getAntX(imagen_actual, 4)));
-    img_antx4.setIcon(resize_icon(getAntX(imagen_actual, 5)));
-    img_antx5.setIcon(resize_icon(getAntX(imagen_actual, 6)));
+    lblAnt1.setIcon(resize(getAnt(imagen_actual, 2)));
+    lblAnt2.setIcon(resize(getAnt(imagen_actual, 3)));
+    lblAnt3.setIcon(resize(getAnt(imagen_actual, 4)));
+    lblAnt4.setIcon(resize(getAnt(imagen_actual, 5)));
+    lblAnt5.setIcon(resize(getAnt(imagen_actual, 6)));
     
-    img_sig.setIcon(resize_icon(getSigX(imagen_actual, 0)));
-    img_sig_sig.setIcon(resize_icon(getSigX(imagen_actual, 1)));
-    img_sigx3.setIcon(resize_icon(getSigX(imagen_actual, 2)));
-    img_sigx4.setIcon(resize_icon(getSigX(imagen_actual, 3)));
-    img_sigx5.setIcon(resize_icon(getSigX(imagen_actual, 4)));
+    lblSig1.setIcon(resize(getSig(imagen_actual, 0)));
+    lblSig2.setIcon(resize(getSig(imagen_actual, 1)));
+    lblSig3.setIcon(resize(getSig(imagen_actual, 2)));
+    lblSig4.setIcon(resize(getSig(imagen_actual, 3)));
+    lblSig5.setIcon(resize(getSig(imagen_actual, 4)));
     
     imagen_actual = imagen_actual.getAnt();
   }
   
-  public ImageIcon resize_icon(ImageIcon image) {
+  public ImageIcon resize(ImageIcon image) {
     Image img = image.getImage().getScaledInstance(100, 77, Image.SCALE_SMOOTH);
     return new ImageIcon(img);
   }
