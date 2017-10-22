@@ -1,7 +1,5 @@
 //Author: Jose Eduardo Sandoval Polanco
 
-//package com.edsand;
-
 import javax.swing.ImageIcon;
 
 class Lista {
@@ -16,8 +14,7 @@ class Lista {
 			inicio = fin = imagen;
 			fin.setSig(inicio);
 			inicio.setAnt(fin);
-		}
-		else {
+		} else {
 			fin.setSig(imagen);
 			fin.getSig().setAnt(fin);
 			fin = fin.getSig();

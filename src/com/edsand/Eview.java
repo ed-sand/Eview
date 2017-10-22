@@ -1,15 +1,26 @@
 //Author: Jose Eduardo Sandoval Polanco
 
-//package com.edsand;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import java.awt.Image;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.Color;
+import java.io.File;
+
 
 public class Eview {
-  public static void main(String[] args) {
-    JFrame frame = new ImageViewerFrame();
+	public static void main(String[] args) {
+		JFrame frame = new ImageViewerFrame();
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setVisible(true);
 	}
@@ -17,6 +28,19 @@ public class Eview {
 
 
 class ImageViewerFrame extends JFrame {
+	private JLabel img_act;
+  private JLabel img_antx5, img_antx3, img_antx4, img_ant_ant, img_ant;
+  private JLabel img_sigx5, img_sigx3, img_sigx4, img_sig_sig, img_sig;
+  private File image_dir;
+  private JButton btn_next, btn_back;
+  private JPanel panel;
+ 	private JLabel label;
+	private Lista lista;
+	private Imagen inicio_de_lista, imagen_actual;
+  private JFileChooser chooser;
+  private static final int DEFAULT_WIDTH = 1366;
+  private static final int DEFAULT_HEIGHT = 722;
+  
 	public ImageViewerFrame() {
 		setTitle("Eview");
 		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
@@ -157,45 +181,23 @@ class ImageViewerFrame extends JFrame {
 	}
 		
 	public void move_back() {
-					label.setIcon(imagen_actual.getAnt().getImagen());
-					img_ant.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getImagen()));
-					img_sig.setIcon(resize_icon(imagen_actual.getImagen()));
-					img_act.setIcon(resize_icon(imagen_actual.getAnt().getImagen()));
-					img_ant_ant.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getImagen()));
-   				img_sig_sig.setIcon(resize_icon(imagen_actual.getSig().getImagen()));
-   				img_sigx3.setIcon(resize_icon(imagen_actual.getSig().getSig().getImagen()));
-   				img_sigx4.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getImagen()));
-   				img_antx3.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getAnt().getImagen()));
-   				img_antx4.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getAnt().getAnt().getImagen()));
-   				img_antx5.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getAnt().getAnt().getAnt().getImagen()));
-   				img_sigx5.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getSig().getImagen()));
-					imagen_actual = imagen_actual.getAnt();
+		label.setIcon(imagen_actual.getAnt().getImagen());
+		img_ant.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getImagen()));
+		img_sig.setIcon(resize_icon(imagen_actual.getImagen()));
+		img_act.setIcon(resize_icon(imagen_actual.getAnt().getImagen()));
+		img_ant_ant.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getImagen()));
+		img_sig_sig.setIcon(resize_icon(imagen_actual.getSig().getImagen()));
+		img_sigx3.setIcon(resize_icon(imagen_actual.getSig().getSig().getImagen()));
+		img_sigx4.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getImagen()));
+		img_antx3.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getAnt().getImagen()));
+		img_antx4.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getAnt().getAnt().getImagen()));
+		img_antx5.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getAnt().getAnt().getAnt().getImagen()));
+		img_sigx5.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getSig().getImagen()));
+		imagen_actual = imagen_actual.getAnt();
 	}
+	
 	public ImageIcon resize_icon(ImageIcon image) {
-		Image img = image.getImage().getScaledInstance(100, 77,  java.awt.Image.SCALE_SMOOTH);
+		Image img = image.getImage().getScaledInstance(100, 77, Image.SCALE_SMOOTH);
 		return new ImageIcon(img);
 	}
-   
-  private JLabel img_antx5;
-  private JLabel img_sigx5;
-  private JLabel img_antx3;
-  private JLabel img_sigx3;
-  private JLabel img_antx4;
-  private JLabel img_sigx4;
-  private JLabel img_ant_ant;
-  private JLabel img_sig_sig;
-  private JLabel img_act;
-  private JLabel img_ant;
-	private JLabel img_sig;
-  private File image_dir;
-  private JButton btn_next;
-  private JButton btn_back;
-  private JPanel panel;
- 	private JLabel label;
-	private Lista lista;
-	private Imagen inicio_de_lista;
-	private Imagen imagen_actual;
-  private JFileChooser chooser;
-  private static final int DEFAULT_WIDTH = 1366;
-  private static final int DEFAULT_HEIGHT = 722;
 }

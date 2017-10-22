@@ -1,7 +1,5 @@
 //Author: Jose Eduardo Sandoval Polanco
 
-//package com.edsand;
-
 import javax.swing.ImageIcon;
 import java.awt.Image;
 
