@@ -80,57 +80,11 @@ class ImageViewerFrame extends JFrame {
 			lista.meter(new Imagen(icon));
 		}
     
-		label.setIcon(lista.getInicio().getImagen());
-    imagen_actual = lista.getInicio();
-    img_act.setIcon(resize_icon(imagen_actual.getImagen()));
-    img_ant.setIcon(resize_icon(imagen_actual.getAnt().getImagen()));
-    img_sig.setIcon(resize_icon(imagen_actual.getSig().getImagen()));
-    img_ant_ant.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getImagen()));
-    img_sig_sig.setIcon(resize_icon(imagen_actual.getSig().getSig().getImagen()));
-		img_sigx3.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getImagen()));
-		img_antx3.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getImagen()));
-		img_sigx4.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getSig().getImagen()));
-		img_antx4.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getAnt().getImagen()));
-		img_sigx5.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getSig().getSig().getImagen()));
-		img_antx5.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getAnt().getAnt().getImagen()));
+    setImagenes();
+    
+    setLabelBounds();
 		
-		panel.setLayout(null);
-		int act_x = 1366/2-50;
-		int act_y = 722-200;
-		btn_back.setBounds(1366/2-110, 630, 100, 50);
-		btn_next.setBounds(1366/2+10, 630, 100, 50);
-		label.setBounds((1366-600)/2, 30, 600, 462);
-		img_ant.setBounds(act_x - 120, act_y, 100, 77);
-		img_sig.setBounds(act_x + 120, act_y, 100, 77);
-		img_act.setBounds(act_x, act_y, 100, 77);
-		img_ant_ant.setBounds(act_x - 240, act_y, 100, 77);
-		img_sig_sig.setBounds(act_x + 240, act_y, 100, 77);
-		img_sigx3.setBounds(act_x + 360, act_y, 100, 77);
-		img_antx3.setBounds(act_x - 360, act_y, 100, 77);
-		img_sigx4.setBounds(act_x + 480, act_y, 100, 77);
-		img_antx4.setBounds(act_x - 480, act_y, 100, 77);
-		img_sigx5.setBounds(act_x + 600, act_y, 100, 77);
-		img_antx5.setBounds(act_x - 600, act_y, 100, 77);
-		
-		menuBar.add(menu);
-		setJMenuBar(menuBar);
-		chooser.setCurrentDirectory(new File("."));
-    panel.add(btn_next);
-    panel.add(btn_back);
-    panel.add(label);
-    panel.add(img_ant);
-    panel.add(img_sig);
-    panel.add(img_act);
-    panel.add(img_ant_ant);
-    panel.add(img_sig_sig);
-    panel.add(img_sigx3);
-    panel.add(img_sigx4);
-    panel.add(img_antx3);
-    panel.add(img_antx4);
-    panel.add(img_antx5);
-    panel.add(img_sigx5);
-    this.getContentPane().add(panel);
-		menu.add(openItem);
+    addComponets();
 		
     openItem.addActionListener(new ActionListener() {
 		  public void actionPerformed(ActionEvent event) {
@@ -163,6 +117,64 @@ class ImageViewerFrame extends JFrame {
 		});
 		
 	}
+  
+  public void setImagenes() {
+    label.setIcon(lista.getInicio().getImagen());
+    imagen_actual = lista.getInicio();
+    img_act.setIcon(resize_icon(imagen_actual.getImagen()));
+    img_ant.setIcon(resize_icon(imagen_actual.getAnt().getImagen()));
+    img_sig.setIcon(resize_icon(imagen_actual.getSig().getImagen()));
+    img_ant_ant.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getImagen()));
+    img_sig_sig.setIcon(resize_icon(imagen_actual.getSig().getSig().getImagen()));
+		img_sigx3.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getImagen()));
+		img_antx3.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getImagen()));
+		img_sigx4.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getSig().getImagen()));
+		img_antx4.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getAnt().getImagen()));
+		img_sigx5.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getSig().getSig().getImagen()));
+		img_antx5.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getAnt().getAnt().getImagen()));
+  }
+  
+  public void setLabelBounds() {
+    panel.setLayout(null);
+		int act_x = 1366/2-50;
+		int act_y = 722-200;
+		btn_back.setBounds(1366/2-110, 630, 100, 50);
+		btn_next.setBounds(1366/2+10, 630, 100, 50);
+		label.setBounds((1366-600)/2, 30, 600, 462);
+		img_ant.setBounds(act_x - 120, act_y, 100, 77);
+		img_sig.setBounds(act_x + 120, act_y, 100, 77);
+		img_act.setBounds(act_x, act_y, 100, 77);
+		img_ant_ant.setBounds(act_x - 240, act_y, 100, 77);
+		img_sig_sig.setBounds(act_x + 240, act_y, 100, 77);
+		img_sigx3.setBounds(act_x + 360, act_y, 100, 77);
+		img_antx3.setBounds(act_x - 360, act_y, 100, 77);
+		img_sigx4.setBounds(act_x + 480, act_y, 100, 77);
+		img_antx4.setBounds(act_x - 480, act_y, 100, 77);
+		img_sigx5.setBounds(act_x + 600, act_y, 100, 77);
+		img_antx5.setBounds(act_x - 600, act_y, 100, 77);
+  }
+  
+  public void addComponets() {
+    menuBar.add(menu);
+		setJMenuBar(menuBar);
+		chooser.setCurrentDirectory(new File("."));
+    panel.add(btn_next);
+    panel.add(btn_back);
+    panel.add(label);
+    panel.add(img_ant);
+    panel.add(img_sig);
+    panel.add(img_act);
+    panel.add(img_ant_ant);
+    panel.add(img_sig_sig);
+    panel.add(img_sigx3);
+    panel.add(img_sigx4);
+    panel.add(img_antx3);
+    panel.add(img_antx4);
+    panel.add(img_antx5);
+    panel.add(img_sigx5);
+    this.getContentPane().add(panel);
+		menu.add(openItem);
+  }
 	
 	public void move_next() {
     label.setIcon(imagen_actual.getSig().getImagen());
