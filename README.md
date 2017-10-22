@@ -23,4 +23,4 @@ TODO: Agregar instrucciones para crear el jar mencionado.
 
 TODO: Cargar las imagenes JIT (Just In Time) para no desperdiciar recursos.
 
-TODO: Integracion con Netbeans
+TODO: Integracion con Netbeans.
