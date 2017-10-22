@@ -38,7 +38,7 @@ class ImageViewerFrame extends JFrame {
   private Lista lista;
   private JMenu menu;
   private JMenuBar menuBar;
-  private  JMenuItem openItem;
+  private JMenuItem openItem;
   private JMenuItem exitItem;
   private Imagen inicio_de_lista, imagen_actual;
   private JFileChooser chooser;
@@ -62,6 +62,7 @@ class ImageViewerFrame extends JFrame {
       ImageIcon icon = new ImageIcon(f.getPath());
       lista.meter(new Imagen(icon));
     }
+    imagen_actual = lista.getInicio();
   }
   
   public void declareVariables() {
@@ -98,19 +99,31 @@ class ImageViewerFrame extends JFrame {
   }
   
   public void setLabelIcons() {
-    label.setIcon(lista.getInicio().getImagen());
-    imagen_actual = lista.getInicio();
+    label.setIcon(imagen_actual.getImagen());
+    
     img_act.setIcon(resize_icon(imagen_actual.getImagen()));
-    img_ant.setIcon(resize_icon(imagen_actual.getAnt().getImagen()));
-    img_sig.setIcon(resize_icon(imagen_actual.getSig().getImagen()));
-    img_ant_ant.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getImagen()));
-    img_sig_sig.setIcon(resize_icon(imagen_actual.getSig().getSig().getImagen()));
-    img_sigx3.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getImagen()));
-    img_antx3.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getImagen()));
-    img_sigx4.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getSig().getImagen()));
-    img_antx4.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getAnt().getImagen()));
-    img_sigx5.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getSig().getSig().getImagen()));
-    img_antx5.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getAnt().getAnt().getImagen()));
+    
+    img_ant.setIcon(resize_icon(getAntX(imagen_actual, 1)));
+    img_ant_ant.setIcon(resize_icon(getAntX(imagen_actual, 2)));
+    img_antx3.setIcon(resize_icon(getAntX(imagen_actual, 3)));
+    img_antx4.setIcon(resize_icon(getAntX(imagen_actual, 4)));
+    img_antx5.setIcon(resize_icon(getAntX(imagen_actual, 5)));
+    
+    img_sig.setIcon(resize_icon(getSigX(imagen_actual, 1)));
+    img_sig_sig.setIcon(resize_icon(getSigX(imagen_actual, 2)));
+    img_sigx3.setIcon(resize_icon(getSigX(imagen_actual, 3)));
+    img_sigx4.setIcon(resize_icon(getSigX(imagen_actual, 4)));
+    img_sigx5.setIcon(resize_icon(getSigX(imagen_actual, 5)));
+  }
+  
+  public ImageIcon getAntX(Imagen imagen, int recorrido) {
+    if (recorrido == 0) return imagen.getImagen();
+    return getAntX(imagen.getAnt(), --recorrido);
+  }
+  
+  public ImageIcon getSigX(Imagen imagen, int recorrido) {
+    if (recorrido == 0) return imagen.getImagen();
+    return getSigX(imagen.getSig(), --recorrido);
   }
   
   public void setLabelBounds() {
@@ -156,34 +169,42 @@ class ImageViewerFrame extends JFrame {
   }
   
   public void move_next() {
-    label.setIcon(imagen_actual.getSig().getImagen());
-    img_sig.setIcon(resize_icon(imagen_actual.getSig().getSig().getImagen()));
+    label.setIcon(getSigX(imagen_actual, 1));
+    
+    img_act.setIcon(resize_icon(getSigX(imagen_actual, 1)));
+    
     img_ant.setIcon(resize_icon(imagen_actual.getImagen()));
-    img_act.setIcon(resize_icon(imagen_actual.getSig().getImagen()));
-    img_ant_ant.setIcon(resize_icon(imagen_actual.getAnt().getImagen()));
-    img_sig_sig.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getImagen()));
-    img_sigx3.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getSig().getImagen()));
-    img_sigx4.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getSig().getSig().getImagen()));
-    img_antx3.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getImagen()));
-    img_antx4.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getImagen()));
-    img_antx5.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getAnt().getImagen()));
-    img_sigx5.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getSig().getSig().getSig().getImagen()));
+    img_ant_ant.setIcon(resize_icon(getAntX(imagen_actual, 1)));
+    img_antx3.setIcon(resize_icon(getAntX(imagen_actual, 2)));
+    img_antx4.setIcon(resize_icon(getAntX(imagen_actual, 3)));
+    img_antx5.setIcon(resize_icon(getAntX(imagen_actual, 4)));
+    
+    img_sig.setIcon(resize_icon(getSigX(imagen_actual, 2)));
+    img_sig_sig.setIcon(resize_icon(getSigX(imagen_actual, 3)));
+    img_sigx3.setIcon(resize_icon(getSigX(imagen_actual, 4)));
+    img_sigx4.setIcon(resize_icon(getSigX(imagen_actual, 5)));
+    img_sigx5.setIcon(resize_icon(getSigX(imagen_actual, 6)));
+    
     imagen_actual = imagen_actual.getSig();
   }
     
   public void move_back() {
-    label.setIcon(imagen_actual.getAnt().getImagen());
-    img_ant.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getImagen()));
-    img_sig.setIcon(resize_icon(imagen_actual.getImagen()));
-    img_act.setIcon(resize_icon(imagen_actual.getAnt().getImagen()));
-    img_ant_ant.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getImagen()));
-    img_sig_sig.setIcon(resize_icon(imagen_actual.getSig().getImagen()));
-    img_sigx3.setIcon(resize_icon(imagen_actual.getSig().getSig().getImagen()));
-    img_sigx4.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getImagen()));
-    img_antx3.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getAnt().getImagen()));
-    img_antx4.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getAnt().getAnt().getImagen()));
-    img_antx5.setIcon(resize_icon(imagen_actual.getAnt().getAnt().getAnt().getAnt().getAnt().getAnt().getImagen()));
-    img_sigx5.setIcon(resize_icon(imagen_actual.getSig().getSig().getSig().getSig().getImagen()));
+    label.setIcon(getAntX(imagen_actual, 1));
+    
+    img_act.setIcon(resize_icon(getAntX(imagen_actual, 1)));
+    
+    img_ant.setIcon(resize_icon(getAntX(imagen_actual, 2)));
+    img_ant_ant.setIcon(resize_icon(getAntX(imagen_actual, 3)));
+    img_antx3.setIcon(resize_icon(getAntX(imagen_actual, 4)));
+    img_antx4.setIcon(resize_icon(getAntX(imagen_actual, 5)));
+    img_antx5.setIcon(resize_icon(getAntX(imagen_actual, 6)));
+    
+    img_sig.setIcon(resize_icon(getSigX(imagen_actual, 0)));
+    img_sig_sig.setIcon(resize_icon(getSigX(imagen_actual, 1)));
+    img_sigx3.setIcon(resize_icon(getSigX(imagen_actual, 2)));
+    img_sigx4.setIcon(resize_icon(getSigX(imagen_actual, 3)));
+    img_sigx5.setIcon(resize_icon(getSigX(imagen_actual, 4)));
+    
     imagen_actual = imagen_actual.getAnt();
   }
   
