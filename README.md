@@ -30,7 +30,7 @@ Compilar classes:
       java com\edsand\Eview
     
 
-CREAR JAR:
+Crear JAR:
 
     LINUX / UNIX / MacOSX:
 
