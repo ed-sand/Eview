@@ -74,3 +74,5 @@ TODO: Agregar un ActionListener que responda a las flechas direccionales y
 cambie de imagen.
 
 TODO: Decrementar imagenes hacia los extremos.
+
+TODO: Difuminar bordes de extremos.
