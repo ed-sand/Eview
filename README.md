@@ -52,7 +52,9 @@ Crear JAR:
 
       java -jar Eview.jar
 
-TODO: Cargar las imagenes JIT (Just In Time) para no desperdiciar recursos.
+TODO: Crear una forma de distribucion conveniente del jar y las imagenes.
+
+TODO: Cargar imagenes JIT (Just In Time) para no desperdiciar recursos.
 
 TODO: Integracion con Netbeans.
 
