@@ -10,7 +10,7 @@ INSTRUCCIONES:
 
 Descargar proyecto:
 
-		git clone https://github.com/ed-sand/Eview.git
+  	git clone https://github.com/ed-sand/Eview.git
 
 Compilar classes:
 

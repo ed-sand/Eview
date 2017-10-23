@@ -54,41 +54,41 @@ public class Eview extends JFrame {
   }
   
   public void paintImages(String movement, JLabel Labels[]) {
-  	if (movement.equals("none")) {
-    	Labels[0].setIcon(imagen_actual.getImagen());
-    	Labels[1].setIcon(resize(imagen_actual.getImagen()));
-    	for (int i = 2; i < 7; i++) 
-      	Labels[i].setIcon(resize(getAnt(imagen_actual, i-1)));
-    	for (int i = 7; i < Labels.length; i++) 
-      	Labels[i].setIcon(resize(getSig(imagen_actual, i-6)));
-  	} else if (movement.equals("back")) {
-    	Labels[0].setIcon(getAnt(imagen_actual, 1));
-    	for (int i = 1; i < 7; i++)
-      	Labels[i].setIcon(resize(getAnt(imagen_actual, i)));
-    	for (int i = 7; i < Labels.length; i++) 
-      	Labels[i].setIcon(resize(getSig(imagen_actual, i-7)));
-    	imagen_actual = imagen_actual.getAnt();
-  	} else {
-    	Labels[0].setIcon(getSig(imagen_actual, 1));
-    	Labels[1].setIcon(resize(getSig(imagen_actual, 1)));
-    	for (int i = 2; i < 7; i++)
-      	Labels[i].setIcon(resize(getAnt(imagen_actual, i-2)));
-    	for (int i = 7; i < Labels.length; i++)
-      	Labels[i].setIcon(resize(getSig(imagen_actual, i-5)));
-    	imagen_actual = imagen_actual.getSig();
-  	}
+    if (movement.equals("none")) {
+      Labels[0].setIcon(imagen_actual.getImagen());
+      Labels[1].setIcon(resize(imagen_actual.getImagen()));
+      for (int i = 2; i < 7; i++) 
+        Labels[i].setIcon(resize(getAnt(imagen_actual, i-1)));
+      for (int i = 7; i < Labels.length; i++) 
+        Labels[i].setIcon(resize(getSig(imagen_actual, i-6)));
+    } else if (movement.equals("back")) {
+      Labels[0].setIcon(getAnt(imagen_actual, 1));
+      for (int i = 1; i < 7; i++)
+        Labels[i].setIcon(resize(getAnt(imagen_actual, i)));
+      for (int i = 7; i < Labels.length; i++) 
+        Labels[i].setIcon(resize(getSig(imagen_actual, i-7)));
+      imagen_actual = imagen_actual.getAnt();
+    } else {
+      Labels[0].setIcon(getSig(imagen_actual, 1));
+      Labels[1].setIcon(resize(getSig(imagen_actual, 1)));
+      for (int i = 2; i < 7; i++)
+        Labels[i].setIcon(resize(getAnt(imagen_actual, i-2)));
+      for (int i = 7; i < Labels.length; i++)
+        Labels[i].setIcon(resize(getSig(imagen_actual, i-5)));
+      imagen_actual = imagen_actual.getSig();
+    }
   }
   
   public void getImagenes() {
-  	if (image_dir.listFiles().length == 0) {
-  		showMessageDialog(this, "No hay imagenes; tomare el directorio " + 
-  														"predetermindado: (./images/)");
-  		image_dir = new File("images/");
-  	}
+    if (image_dir.listFiles().length == 0) {
+      showMessageDialog(this, "No hay imagenes; tomare el directorio " + 
+                              "predetermindado: (./images/)");
+      image_dir = new File("images/");
+    }
     for (File f: image_dir.listFiles()) {
       ImageIcon icon = new ImageIcon(f.getPath());
       lista.meter(new Imagen(icon, DEFAULT_IMAGEN_ACTUAL_WIDTH_BIG,
-      						DEFAULT_IMAGEN_ACTUAL_HEIGHT_BIG));
+                  DEFAULT_IMAGEN_ACTUAL_HEIGHT_BIG));
     }
     imagen_actual = lista.getInicio();
   }
@@ -110,7 +110,7 @@ public class Eview extends JFrame {
     chooser.setDialogTitle("Eview: Escoge el Directorio de Imagenes");
     chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
     if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
-    	image_dir = new File(chooser.getSelectedFile().getPath());
+      image_dir = new File(chooser.getSelectedFile().getPath());
     else image_dir = new File("images/");
     lista = new Lista();
     menu = new JMenu("Archivo");
@@ -150,15 +150,15 @@ public class Eview extends JFrame {
     btn_back.setBounds(middle_x-110, DEFAULT_HEIGHT-100, 100, 50);
     btn_next.setBounds(middle_x+10, DEFAULT_HEIGHT-100, 100, 50);
     Labels[0].setBounds((DEFAULT_WIDTH - DEFAULT_IMAGEN_ACTUAL_WIDTH_BIG)/2, 10, 
-    										DEFAULT_IMAGEN_ACTUAL_WIDTH_BIG, 
-    										DEFAULT_IMAGEN_ACTUAL_HEIGHT_BIG);
+                        DEFAULT_IMAGEN_ACTUAL_WIDTH_BIG, 
+                        DEFAULT_IMAGEN_ACTUAL_HEIGHT_BIG);
     Labels[1].setBounds(act_x, act_y, DEFAULT_IMAGEN_THUMB_WIDTH,
-    									  DEFAULT_IMAGEN_THUMB_HEIGTH);
+                        DEFAULT_IMAGEN_THUMB_HEIGTH);
     for (int i = 2; i < 7; i++) {
       Labels[i].setBounds(act_x - x_offset, act_y, DEFAULT_IMAGEN_THUMB_WIDTH, 
-      										DEFAULT_IMAGEN_THUMB_HEIGTH);
+                          DEFAULT_IMAGEN_THUMB_HEIGTH);
       Labels[i+5].setBounds(act_x + x_offset, act_y, DEFAULT_IMAGEN_THUMB_WIDTH, 
-      											DEFAULT_IMAGEN_THUMB_HEIGTH);
+                            DEFAULT_IMAGEN_THUMB_HEIGTH);
       x_offset += 120;
     }
   }
@@ -174,8 +174,8 @@ public class Eview extends JFrame {
   
   public ImageIcon resize(ImageIcon image) {
     Image img = image.getImage().getScaledInstance(DEFAULT_IMAGEN_THUMB_WIDTH,
-    																							 DEFAULT_IMAGEN_THUMB_HEIGTH,
-    																						   Image.SCALE_SMOOTH);
+                                                   DEFAULT_IMAGEN_THUMB_HEIGTH,
+                                                   Image.SCALE_SMOOTH);
     return new ImageIcon(img);
   }
   
@@ -193,8 +193,8 @@ public class Eview extends JFrame {
         if (result == JFileChooser.APPROVE_OPTION) {
           String name = chooser.getSelectedFile().getPath();
           lista.meter(new Imagen(new ImageIcon(name), 
-          											 DEFAULT_IMAGEN_ACTUAL_WIDTH_BIG,
-      													 DEFAULT_IMAGEN_ACTUAL_HEIGHT_BIG));
+                                 DEFAULT_IMAGEN_ACTUAL_WIDTH_BIG,
+                                 DEFAULT_IMAGEN_ACTUAL_HEIGHT_BIG));
         }
       }
     });

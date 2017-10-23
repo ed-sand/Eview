@@ -12,7 +12,7 @@ class Imagen {
   public Imagen(ImageIcon image, int WIDTH, int HEIGHT) {
     sig = ant = null;
     Image img = image.getImage().getScaledInstance(WIDTH, HEIGHT,  
-    																							 java.awt.Image.SCALE_SMOOTH);
+                                                   java.awt.Image.SCALE_SMOOTH);
     this.image = new ImageIcon(img);
   }
   
