@@ -19,16 +19,7 @@ import java.awt.Color;
 import java.io.File;
 
 
-public class Eview {
-  public static void main(String[] args) {
-    JFrame frame = new ImageViewerFrame();
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.setVisible(true);
-  }
-}
-
-
-class ImageViewerFrame extends JFrame {
+public class Eview extends JFrame {
   private JPanel panel;
   private JButton btn_next, btn_back;
   private JLabel lblBigImage, lblAct;
@@ -43,8 +34,8 @@ class ImageViewerFrame extends JFrame {
   private Lista lista;
   private static final int DEFAULT_WIDTH = 1366;
   private static final int DEFAULT_HEIGHT = 722;
-  
-  public ImageViewerFrame() {
+
+  public Eview() {
     setTitle("Eview");
     setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
     setVariables();
@@ -200,5 +191,11 @@ class ImageViewerFrame extends JFrame {
         if (imagen_actual.getAnt() != null) move_back(getLabels());
       }
     });
+  }
+  
+  public static void main(String[] args) {
+    JFrame frame = new Eview();
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(true);
   }
 }
