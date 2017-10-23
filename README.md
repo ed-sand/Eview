@@ -15,11 +15,9 @@ Compilar classes:
 
     LINUX / UNIX / MacOSX:
 
-      cd Eview/src/
+      cd Eview/
 
-      javac com/edsand/Eview.java
-
-      java com/edsand/Eview
+      make compile
 
     WINDOWS
     
@@ -32,17 +30,13 @@ Compilar classes:
 
 Crear JAR:
 
-    LINUX / UNIX / MacOSX:
+		LINUX / UNIX / MacOSX:
 
-      cd Eview/src/
-
-      javac com/edsand/Eview.java
-
-      jar cmvf META-INF/MANIFEST.MF Eview.jar com/edsand/*.class images/
-
-      java -jar Eview.jar
-
-    WINDOWS
+      cd Eview/
+      
+      make jar
+      
+		WINDOWS
     
       cd Eview\src
 
@@ -51,6 +45,22 @@ Crear JAR:
       jar cmvf META-INF\MANIFEST.MF Eview.jar com\edsand\\*.class images\
 
       java -jar Eview.jar
+      
+Correr JAR:
+
+		LINUX / UNIX / MacOSX:
+		
+			cd Eview/
+      
+      make run
+      
+Limpiar directorio:
+
+		LINUX / UNIX / MacOSX:
+		
+			cd Eview/
+			
+			make clean
 
 TODO: Crear una forma de distribucion conveniente del jar y las imagenes.
 
