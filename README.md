@@ -61,6 +61,10 @@ Crear zip del proyecto:
 		cd Eview/
 		make zip
 
+TODO: Respetar proporciones de imagenes al dibujar al JPanel.
+
+TODO: Agregar script para manejar RELEASES facilmente.
+
 TODO: Cargar imagenes JIT (Just In Time) para no desperdiciar recursos.
 
 TODO: Integracion con Netbeans.
@@ -78,4 +82,8 @@ TODO: Tornar transparente el JFrame.
 
 TODO: Agregar icono de programa.
 
-TODO: Integrar el dibujo de componentes en una sola funcion.
+TODO: Agregar zoom.
+
+TODO: Agregar filtros.
+
+TODO: Agregar configuracion de directorios personalizados.
