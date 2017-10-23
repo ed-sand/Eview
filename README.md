@@ -75,3 +75,5 @@ TODO: Decrementar imagenes hacia los extremos.
 TODO: Difuminar bordes de extremos.
 
 TODO: Tornar transparente el JFrame.
+
+TODO: Agregar icono de programa.
