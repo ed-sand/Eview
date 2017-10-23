@@ -1,2 +1,3 @@
 *.class
 gitpush.sh
+build/
