@@ -87,3 +87,5 @@ TODO: Agregar zoom.
 TODO: Agregar filtros.
 
 TODO: Agregar configuracion de directorios personalizados.
+
+TODO: Manage Exceptions.
