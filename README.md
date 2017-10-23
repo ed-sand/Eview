@@ -67,3 +67,5 @@ TODO: Dar la opcion al usuario de escoger un directorio de imagenes diferente al
 TODO: Integracion con Netbeans.
 
 TODO: Hacerlo bonito :v (Me han dicho que esta feo :c)
+
+TODO: Agregar un ActionListener que responda a las flechas direccionales y cambie de imagen.
