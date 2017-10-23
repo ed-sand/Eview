@@ -43,22 +43,22 @@ Correr JAR:
 
 	LINUX / UNIX / MacOSX:
 		
-			cd Eview/
-			make run
+		cd Eview/
+		make run
       
 Limpiar directorio:
 
 	LINUX / UNIX / MacOSX:
 		
-			cd Eview/
-			make clean
+		cd Eview/
+		make clean
 
 Crear zip del proyecto:
 
 	LINUX / UNIX / MacOSX:
 		
-			cd Eview/
-			make zip
+		cd Eview/
+		make zip
 			
 TODO: Cargar imagenes JIT (Just In Time) para no desperdiciar recursos.
 
