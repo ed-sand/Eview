@@ -9,57 +9,56 @@ INSTRUCCIONES:
 
 Descargar proyecto:
 
-    git clone https://github.com/ed-sand/Eview.git
+		git clone https://github.com/ed-sand/Eview.git
 
 Compilar classes:
 
-    LINUX / UNIX / MacOSX:
+	LINUX / UNIX / MacOSX:
 
-      cd Eview/
+		cd Eview/
 
-      make compile
+		make compile
 
-    WINDOWS
+	WINDOWS
     
-      cd Eview\src
+		cd Eview\src
 
-      javac com\edsand\Eview.java
+		javac com\edsand\Eview.java
 
-      java com\edsand\Eview
+		java com\edsand\Eview
     
 
 Crear JAR:
 
-		LINUX / UNIX / MacOSX:
+	LINUX / UNIX / MacOSX:
 
-      cd Eview/
+		cd Eview/
       
-      make jar
+		make jar
       
-		WINDOWS
+	WINDOWS
     
-      cd Eview\src
+		cd Eview\src
 
-      javac com\edsand\Eview.java
+		javac com\edsand\Eview.java
 
-      jar cmvf META-INF\MANIFEST.MF Eview.jar com\edsand\\*.class images\
+		jar cmvf META-INF\MANIFEST.MF Eview.jar com\edsand\\*.class images\
 
-      java -jar Eview.jar
+		java -jar Eview.jar
       
 Correr JAR:
 
-		LINUX / UNIX / MacOSX:
-		
-			cd Eview/
-      
-      make run
-      
-Limpiar directorio:
-
-		LINUX / UNIX / MacOSX:
+	LINUX / UNIX / MacOSX:
 		
 			cd Eview/
 			
+			make run
+      
+Limpiar directorio:
+
+	LINUX / UNIX / MacOSX:
+		
+			cd Eview/
 			make clean
 
 TODO: Crear una forma de distribucion conveniente del jar y las imagenes.
