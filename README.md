@@ -72,3 +72,5 @@ TODO: Hacerlo bonito :v (Me han dicho que esta feo :c)
 
 TODO: Agregar un ActionListener que responda a las flechas direccionales y 
 cambie de imagen.
+
+TODO: Decrementar imagenes hacia los extremos.

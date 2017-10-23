@@ -4,12 +4,10 @@ compile:
 	javac com/edsand/Eview.java
   
 jar:
-	if [ ! -f com/edsand/Eview.class ];\
-		then	javac com/edsand/Eview.java;\
-	fi
+	javac com/edsand/Eview.java;
 	if [ ! -f Eview_RELEASE.1.0.0.jar ];\
 		then	jar cmvf META-INF/MANIFEST.MF Eview_RELEASE.1.0.0.jar\
-		          com/edsand/*.class images/;	\
+		               com/edsand/*.class images/;	\
 	fi
 	if [ ! -d build/ ];\
 		then	mkdir build/ &&	mkdir build/Eview/;\
@@ -18,12 +16,10 @@ jar:
 	cp -R images/ build/Eview
   
 run:
-	if [ ! -f com/edsand/Eview.class ];\
-		then	javac com/edsand/Eview.java;\
-	fi
+	javac com/edsand/Eview.java;
 	if [ ! -f Eview_RELEASE.1.0.0.jar ];\
 		then	jar cmvf META-INF/MANIFEST.MF Eview_RELEASE.1.0.0.jar\
-		      com/edsand/*.class images/;	\
+		               com/edsand/*.class images/;	\
 	fi
 	if [ ! -d build/ ];\
 		then	mkdir build/ &&	mkdir build/Eview/;\
@@ -33,12 +29,10 @@ run:
 	java -jar build/Eview/Eview_RELEASE.1.0.0.jar
   
 zip:
-	if [ ! -f com/edsand/Eview.class ];\
-		then	javac com/edsand/Eview.java;\
-	fi
+	javac com/edsand/Eview.java;
 	if [ ! -f Eview_RELEASE.1.0.0.jar ];\
 		then	jar cmvf META-INF/MANIFEST.MF Eview_RELEASE.1.0.0.jar\
-		      com/edsand/*.class images/;	\
+		               com/edsand/*.class images/;	\
 	fi
 	if [ ! -d build/ ];\
 		then	mkdir build/ &&	mkdir build/Eview/;\
