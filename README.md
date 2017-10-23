@@ -1,7 +1,8 @@
 # Eview
 Visor de imagenes en Java
 
-Uso la linea de comandos (Ubuntu Linux 17.04 x64) para compilar y ejecutar el programa.
+Uso la linea de comandos (Ubuntu Linux 17.04 x64) para compilar y ejecutar el 
+programa.
 
 #! No tengo integracion con NetBeans aun.
 
@@ -62,10 +63,12 @@ Crear zip del proyecto:
 
 TODO: Cargar imagenes JIT (Just In Time) para no desperdiciar recursos.
 
-TODO: Dar la opcion al usuario de escoger un directorio de imagenes diferente al predeterminado.
+TODO: Dar la opcion al usuario de escoger un directorio de imagenes diferente al 
+predeterminado.
 
 TODO: Integracion con Netbeans.
 
 TODO: Hacerlo bonito :v (Me han dicho que esta feo :c)
 
-TODO: Agregar un ActionListener que responda a las flechas direccionales y cambie de imagen.
+TODO: Agregar un ActionListener que responda a las flechas direccionales y 
+cambie de imagen.

@@ -8,7 +8,8 @@ jar:
 		then	javac com/edsand/Eview.java;\
 	fi
 	if [ ! -f Eview_RELEASE.1.0.0.jar ];\
-		then	jar cmvf META-INF/MANIFEST.MF Eview_RELEASE.1.0.0.jar com/edsand/*.class images/;	\
+		then	jar cmvf META-INF/MANIFEST.MF Eview_RELEASE.1.0.0.jar\
+		          com/edsand/*.class images/;	\
 	fi
 	if [ ! -d build/ ];\
 		then	mkdir build/ &&	mkdir build/Eview/;\
@@ -21,7 +22,8 @@ run:
 		then	javac com/edsand/Eview.java;\
 	fi
 	if [ ! -f Eview_RELEASE.1.0.0.jar ];\
-		then	jar cmvf META-INF/MANIFEST.MF Eview_RELEASE.1.0.0.jar com/edsand/*.class images/;	\
+		then	jar cmvf META-INF/MANIFEST.MF Eview_RELEASE.1.0.0.jar\
+		      com/edsand/*.class images/;	\
 	fi
 	if [ ! -d build/ ];\
 		then	mkdir build/ &&	mkdir build/Eview/;\
@@ -35,7 +37,8 @@ zip:
 		then	javac com/edsand/Eview.java;\
 	fi
 	if [ ! -f Eview_RELEASE.1.0.0.jar ];\
-		then	jar cmvf META-INF/MANIFEST.MF Eview_RELEASE.1.0.0.jar com/edsand/*.class images/;	\
+		then	jar cmvf META-INF/MANIFEST.MF Eview_RELEASE.1.0.0.jar\
+		      com/edsand/*.class images/;	\
 	fi
 	if [ ! -d build/ ];\
 		then	mkdir build/ &&	mkdir build/Eview/;\
@@ -43,7 +46,8 @@ zip:
 	mv Eview_RELEASE.1.0.0.jar build/Eview
 	cp -R images/ build/Eview
 	if [ ! -f Eview_RELEASE.1.0.0.zip ];\
-		then	cd build && zip -r Eview_RELEASE.1.0.0.zip Eview && mv Eview_RELEASE.1.0.0.zip ../;\
+		then	cd build && zip -r Eview_RELEASE.1.0.0.zip Eview\
+		      && mv Eview_RELEASE.1.0.0.zip ../;\
 	fi
 
 clean-git:

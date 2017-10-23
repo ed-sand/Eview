@@ -11,7 +11,8 @@ class Imagen {
   
   public Imagen(ImageIcon image) {
     sig = ant = null;
-    Image img = image.getImage().getScaledInstance(600, 462,  java.awt.Image.SCALE_SMOOTH);
+    Image img = image.getImage().getScaledInstance(600, 462,  
+    																							 java.awt.Image.SCALE_SMOOTH);
     this.image = new ImageIcon(img);
   }
   
