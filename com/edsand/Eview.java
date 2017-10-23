@@ -163,7 +163,7 @@ public class Eview extends JFrame {
                        lblAnt1,     lblAnt2,  lblAnt3, lblAnt4, lblAnt5,
                        lblSig1,     lblSig2,  lblSig3, lblSig4,  lblSig5};   
     return Labels;      
-  }
+  } 
   
   public void addActionListeners() {
     openItem.addActionListener(new ActionListener() {
@@ -196,6 +196,7 @@ public class Eview extends JFrame {
   public static void main(String[] args) {
     JFrame frame = new Eview();
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setLocationRelativeTo(null);
     frame.setVisible(true);
   }
 }
