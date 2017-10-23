@@ -7,28 +7,50 @@ Uso la linea de comandos (Ubuntu Linux 17.04 x64) para compilar y ejecutar el pr
 
 INSTRUCCIONES:
 
-LINUX / UNIX / MacOSX
+Descargar proyecto:
 
     git clone https://github.com/ed-sand/Eview.git
 
-    cd Eview/src/
+Compilar classes:
 
-    javac com/edsand/Eview.java
+    LINUX / UNIX / MacOSX:
 
-    java com/edsand/Eview
+      cd Eview/src/
 
-WINDOWS
+      javac com/edsand/Eview.java
+
+      java com/edsand/Eview
+
+    WINDOWS
     
-    git clone https://github.com/ed-sand/Eview.git
-    
-    cd Eview\src
+      cd Eview\src
 
-    javac com\edsand\Eview.java
+      javac com\edsand\Eview.java
 
-    java com\edsand\Eview
+      java com\edsand\Eview
     
 
-TODO: Agregar instrucciones para crear el jar mencionado.
+CREAR JAR:
+
+    LINUX / UNIX / MacOSX:
+
+      cd Eview/src/
+
+      javac com/edsand/Eview.java
+
+      jar cmvf META-INF/MANIFEST.MF Eview.jar com/edsand/*.class com/images/
+
+      java -jar Eview.jar
+
+    WINDOWS
+    
+      cd Eview\src
+
+      javac com\edsand\Eview.java
+
+      jar cmvf META-INF\MANIFEST.MF Eview.jar com\edsand\\*.class com\images\
+
+      java -jar Eview.jar
 
 TODO: Cargar las imagenes JIT (Just In Time) para no desperdiciar recursos.
 
