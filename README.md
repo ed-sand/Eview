@@ -53,7 +53,13 @@ Limpiar directorio:
 			cd Eview/
 			make clean
 
+Crear zip del proyecto:
 
+	LINUX / UNIX / MacOSX:
+		
+			cd Eview/
+			make zip
+			
 TODO: Cargar imagenes JIT (Just In Time) para no desperdiciar recursos.
 
 TODO: Integracion con Netbeans.
