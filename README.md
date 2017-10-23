@@ -55,3 +55,5 @@ Crear JAR:
 TODO: Cargar las imagenes JIT (Just In Time) para no desperdiciar recursos.
 
 TODO: Integracion con Netbeans.
+
+TODO: Hacerlo boninto :v (Me han dicho que esta feo :c)
