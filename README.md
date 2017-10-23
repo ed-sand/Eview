@@ -38,7 +38,7 @@ Crear JAR:
 
       javac com/edsand/Eview.java
 
-      jar cmvf META-INF/MANIFEST.MF Eview.jar com/edsand/*.class com/images/
+      jar cmvf META-INF/MANIFEST.MF Eview.jar com/edsand/*.class images/
 
       java -jar Eview.jar
 
@@ -48,7 +48,7 @@ Crear JAR:
 
       javac com\edsand\Eview.java
 
-      jar cmvf META-INF\MANIFEST.MF Eview.jar com\edsand\\*.class com\images\
+      jar cmvf META-INF\MANIFEST.MF Eview.jar com\edsand\\*.class images\
 
       java -jar Eview.jar
 

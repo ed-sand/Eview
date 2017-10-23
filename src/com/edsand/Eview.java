@@ -77,7 +77,7 @@ class ImageViewerFrame extends JFrame {
     lblSig4 = new JLabel();
     lblSig5 = new JLabel();
     lblAnt5 = new JLabel();
-    image_dir = new File("com/images/");
+    image_dir = new File("images/");
     chooser = new JFileChooser();
     lista = new Lista();
     menu = new JMenu("Archivo");
