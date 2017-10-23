@@ -53,7 +53,6 @@ Limpiar directorio:
 			cd Eview/
 			make clean
 
-TODO: Crear una forma de distribucion conveniente del jar y las imagenes.
 
 TODO: Cargar imagenes JIT (Just In Time) para no desperdiciar recursos.
 
