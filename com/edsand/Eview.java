@@ -68,8 +68,12 @@ public class Eview extends JFrame {
     lblSig4 = new JLabel();
     lblSig5 = new JLabel();
     lblAnt5 = new JLabel();
-    image_dir = new File("images/");
     chooser = new JFileChooser();
+    chooser.setDialogTitle("Eview: Escoge el Directorio de Imagenes");
+    chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+    if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
+    	image_dir = new File(chooser.getSelectedFile().getPath());
+    else image_dir = new File("images/");
     lista = new Lista();
     menu = new JMenu("Archivo");
     menuBar = new JMenuBar();

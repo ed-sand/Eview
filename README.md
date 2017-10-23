@@ -63,9 +63,6 @@ Crear zip del proyecto:
 
 TODO: Cargar imagenes JIT (Just In Time) para no desperdiciar recursos.
 
-TODO: Dar la opcion al usuario de escoger un directorio de imagenes diferente al 
-predeterminado.
-
 TODO: Integracion con Netbeans.
 
 TODO: Hacerlo bonito :v (Me han dicho que esta feo :c)
