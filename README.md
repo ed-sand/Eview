@@ -77,3 +77,5 @@ TODO: Difuminar bordes de extremos.
 TODO: Tornar transparente el JFrame.
 
 TODO: Agregar icono de programa.
+
+TODO: Integrar el dibujo de componentes en una sola funcion.
