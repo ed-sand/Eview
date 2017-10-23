@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 compile:
 	javac com/edsand/Eview.java
   

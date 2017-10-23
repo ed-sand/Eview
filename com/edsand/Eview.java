@@ -211,8 +211,8 @@ public class Eview extends JFrame {
   
   public static void main(String[] args) {
     JFrame frame = new Eview();
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setLocationRelativeTo(null);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setVisible(true);
   }
 }
