@@ -11,23 +11,22 @@ LINUX / UNIX / MacOSX
 
     git clone https://github.com/ed-sand/Eview.git
 
-    cd Eview/src/com/edsand/
+    cd Eview/src/
 
-    javac Eview.java
+    javac com/edsand/Eview.java
 
-    java Eview
+    java com/edsand/Eview
 
 WINDOWS
     
     git clone https://github.com/ed-sand/Eview.git
     
-    cd Eview\src\com\edsand\
+    cd Eview\src
 
-    javac Eview.java
+    javac com\edsand\Eview.java
 
-    java Eview
+    java com\edsand\Eview
     
-TODO: Crear un paquete jar para la distribucion en forma binaria.
 
 TODO: Agregar instrucciones para crear el jar mencionado.
 
