@@ -18,6 +18,8 @@ import java.awt.event.ActionListener;
 import java.awt.Color;
 import java.io.File;
 
+import static javax.swing.JOptionPane.showMessageDialog;
+
 
 public class Eview extends JFrame {
   private JPanel panel;
@@ -78,6 +80,11 @@ public class Eview extends JFrame {
   }
   
   public void getImagenes() {
+  	if (image_dir.listFiles().length == 0) {
+  		showMessageDialog(this, "No hay imagenes; tomare el directorio " + 
+  														"predetermindado: (./images/)");
+  		image_dir = new File("images/");
+  	}
     for (File f: image_dir.listFiles()) {
       ImageIcon icon = new ImageIcon(f.getPath());
       lista.meter(new Imagen(icon, DEFAULT_IMAGEN_ACTUAL_WIDTH_BIG,
