@@ -16,15 +16,12 @@ Compilar classes:
 	LINUX / UNIX / MacOSX:
 
 		cd Eview/
-
 		make compile
 
 	WINDOWS
     
 		cd Eview\src
-
 		javac com\edsand\Eview.java
-
 		java com\edsand\Eview
     
 
@@ -33,17 +30,13 @@ Crear JAR:
 	LINUX / UNIX / MacOSX:
 
 		cd Eview/
-      
 		make jar
       
 	WINDOWS
     
 		cd Eview\src
-
 		javac com\edsand\Eview.java
-
 		jar cmvf META-INF\MANIFEST.MF Eview.jar com\edsand\\*.class images\
-
 		java -jar Eview.jar
       
 Correr JAR:
@@ -51,7 +44,6 @@ Correr JAR:
 	LINUX / UNIX / MacOSX:
 		
 			cd Eview/
-			
 			make run
       
 Limpiar directorio:
