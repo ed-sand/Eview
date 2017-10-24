@@ -2,8 +2,10 @@
 
 package com.edsand;
 
-import javax.swing.JFrame;
+
+import javax.swing.SwingUtilities;
 import javax.swing.JPanel;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JMenu;
@@ -15,7 +17,9 @@ import javax.imageio.ImageIO;
 import java.awt.Image;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
@@ -59,7 +63,6 @@ public class Eview extends JFrame {
     try {
       imagen_actual.getImagen();
     } catch (NullPointerException e) {
-      System.out.println("hello");
       getImagenes("NullImagenes");
     }
     if (movement.equals("none")) {
@@ -123,6 +126,7 @@ public class Eview extends JFrame {
     else image_dir = new File("images/");
     lista = new Lista();
     btn_next = new JButton("Sig");
+    btn_next.setOpaque(true);
     btn_back = new JButton("Atras");
     menu = new JMenu("Archivo");
     menuBar = new JMenuBar();
@@ -198,8 +202,29 @@ public class Eview extends JFrame {
   } 
   
   public void addActionListeners() {
+    btn_back.addKeyListener(new KeyListener() {
+      public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_LEFT)
+          paintImages("back", getLabels());
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT)
+          paintImages("next", getLabels());
+      }
+      public void keyReleased(KeyEvent e) {}
+      public void keyTyped(KeyEvent e) {}
+    });
+    btn_next.addKeyListener(new KeyListener() {
+      public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_LEFT)
+          paintImages("back", getLabels());
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT)
+          paintImages("next", getLabels());
+      }
+      public void keyReleased(KeyEvent e) {}
+      public void keyTyped(KeyEvent e) {}
+    });
     openItem.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent event) {
+        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         int result = chooser.showOpenDialog(null);
         if (result == JFileChooser.APPROVE_OPTION) {
           String name = chooser.getSelectedFile().getPath();

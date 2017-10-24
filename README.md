@@ -71,9 +71,6 @@ TODO: Integracion con Netbeans.
 
 TODO: Hacerlo bonito :v (Me han dicho que esta feo :c)
 
-TODO: Agregar un ActionListener que responda a las flechas direccionales y 
-cambie de imagen.
-
 TODO: Decrementar imagenes hacia los extremos.
 
 TODO: Difuminar bordes de extremos.
@@ -87,3 +84,5 @@ TODO: Agregar zoom.
 TODO: Agregar filtros.
 
 TODO: Agregar configuracion de directorios personalizados.
+
+TODO: Agregar opcion para incluir mas directorios en el openMenuItem.
