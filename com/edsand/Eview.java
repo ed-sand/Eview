@@ -11,12 +11,14 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.imageio.ImageIO;
 import java.awt.Image;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
 import java.io.File;
+import java.io.IOException;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
@@ -46,7 +48,7 @@ public class Eview extends JFrame {
     setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
     setVariables();
     JButton Buttons[] = {btn_back, btn_next};
-    getImagenes();
+    getImagenes("normal");
     paintImages("none", getLabels());
     setLabelBounds(getLabels());
     addComponets(Buttons, getLabels());
@@ -54,6 +56,12 @@ public class Eview extends JFrame {
   }
   
   public void paintImages(String movement, JLabel Labels[]) {
+    try {
+      imagen_actual.getImagen();
+    } catch (NullPointerException e) {
+      System.out.println("hello");
+      getImagenes("NullImagenes");
+    }
     if (movement.equals("none")) {
       Labels[0].setIcon(imagen_actual.getImagen());
       Labels[1].setIcon(resize(imagen_actual.getImagen()));
@@ -79,47 +87,24 @@ public class Eview extends JFrame {
     }
   }
   
-  public void getImagenes() {
-    if (image_dir.listFiles().length == 0) {
+  public void getImagenes(String caso) {
+    if (image_dir.listFiles().length == 0 || caso.equals("NullImagenes")) {
       showMessageDialog(this, "No hay imagenes; tomare el directorio " + 
                               "predetermindado: (./images/)");
       image_dir = new File("images/");
     }
-    for (File f: image_dir.listFiles()) {
-      ImageIcon icon = new ImageIcon(f.getPath());
-      lista.meter(new Imagen(icon, DEFAULT_IMAGEN_ACTUAL_WIDTH_BIG,
-                  DEFAULT_IMAGEN_ACTUAL_HEIGHT_BIG));
-    }
-    imagen_actual = lista.getInicio();
+    try {
+      for (File f: image_dir.listFiles()) {
+        if (ImageIO.read(f) != null) {
+          ImageIcon icon = new ImageIcon(f.getPath());
+          lista.meter(new Imagen(icon, DEFAULT_IMAGEN_ACTUAL_WIDTH_BIG,
+                    DEFAULT_IMAGEN_ACTUAL_HEIGHT_BIG));}
+      }
+      imagen_actual = lista.getInicio();
+    } catch (IOException e) {}
   }
   
   public void setVariables() {
-    lblBigImage = new JLabel();
-    lblAnt1 = new JLabel();
-    lblSig1 = new JLabel();
-    lblAct = new JLabel();
-    lblAnt2 = new JLabel();
-    lblSig2 = new JLabel();
-    lblAnt3 = new JLabel();
-    lblAnt4 = new JLabel();
-    lblSig3 = new JLabel();
-    lblSig4 = new JLabel();
-    lblSig5 = new JLabel();
-    lblAnt5 = new JLabel();
-    chooser = new JFileChooser();
-    chooser.setDialogTitle("Eview: Escoge el Directorio de Imagenes");
-    chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-    if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
-      image_dir = new File(chooser.getSelectedFile().getPath());
-    else image_dir = new File("images/");
-    lista = new Lista();
-    menu = new JMenu("Archivo");
-    menuBar = new JMenuBar();
-    openItem = new JMenuItem("Abrir");
-    btn_next = new JButton("Sig");
-    btn_back = new JButton("Atras");
-    exitItem = new JMenuItem("Exit");
-    chooser.setCurrentDirectory(new File("."));
     panel = new JPanel() {
       @Override
       public void paintComponent(Graphics g) {
@@ -129,6 +114,32 @@ public class Eview extends JFrame {
         g.fillRect(DEFAULT_WIDTH/2-65, DEFAULT_HEIGHT-215, 130, 107);
       }
     };
+    chooser = new JFileChooser();
+    chooser.setCurrentDirectory(new File("."));
+    chooser.setDialogTitle("Eview: Escoge el Directorio de Imagenes");
+    chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+    if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
+      image_dir = new File(chooser.getSelectedFile().getPath());
+    else image_dir = new File("images/");
+    lista = new Lista();
+    btn_next = new JButton("Sig");
+    btn_back = new JButton("Atras");
+    menu = new JMenu("Archivo");
+    menuBar = new JMenuBar();
+    openItem = new JMenuItem("Abrir");
+    exitItem = new JMenuItem("Exit");
+    lblBigImage = new JLabel();
+    lblAct = new JLabel();
+    lblAnt1 = new JLabel();
+    lblAnt2 = new JLabel();
+    lblAnt3 = new JLabel();
+    lblAnt4 = new JLabel();
+    lblAnt5 = new JLabel();
+    lblSig1 = new JLabel();
+    lblSig2 = new JLabel();
+    lblSig3 = new JLabel();
+    lblSig4 = new JLabel();
+    lblSig5 = new JLabel();
   }
   
   public ImageIcon getAnt(Imagen imagen, int recorrido) {
