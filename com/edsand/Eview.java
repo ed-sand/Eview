@@ -92,8 +92,9 @@ public class Eview extends JFrame {
   
   public void getImagenes(String caso) {
     if (image_dir.listFiles().length == 0 || caso.equals("NullImagenes")) {
-      showMessageDialog(this, "No hay imagenes; tomare el directorio " + 
-                              "predetermindado: (./images/)");
+      showMessageDialog(this, "No hay imagenes:\n" + 
+      												"    Tomare el directorio predetermindado.\n" +
+      												"    ( ./images/ )");
       image_dir = new File("images/");
     }
     try {
