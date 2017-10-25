@@ -46,6 +46,10 @@ public class Eview extends JFrame {
   private static final int DEFAULT_IMAGEN_ACTUAL_HEIGHT_BIG = (int)(700*0.77);
   private static final int DEFAULT_IMAGEN_THUMB_WIDTH = 100;
   private static final int DEFAULT_IMAGEN_THUMB_HEIGTH = 77;
+  private int curr_width = DEFAULT_IMAGEN_ACTUAL_WIDTH_BIG;
+  private int curr_height = DEFAULT_IMAGEN_ACTUAL_HEIGHT_BIG;
+  
+  private JPanel img_actual_panel;
 
   public Eview() {
     setTitle("Eview");
@@ -65,6 +69,8 @@ public class Eview extends JFrame {
     } catch (NullPointerException e) {
       getImagenes("NullImagenes");
     }
+    curr_width = DEFAULT_IMAGEN_ACTUAL_WIDTH_BIG;
+    curr_height = DEFAULT_IMAGEN_ACTUAL_HEIGHT_BIG;
     if (movement.equals("none")) {
       Labels[0].setIcon(imagen_actual.getImagen());
       Labels[1].setIcon(resize(imagen_actual.getImagen()));
@@ -88,6 +94,13 @@ public class Eview extends JFrame {
         Labels[i].setIcon(resize(getSig(imagen_actual, i-5)));
       imagen_actual = imagen_actual.getSig();
     }
+  }
+  
+  public void paintImagenResize(int width, int height) {
+    Image img = imagen_actual.getImagen().getImage().getScaledInstance(width, 
+    																																height,
+                                                                    Image.SCALE_SMOOTH);
+    lblBigImage.setIcon(new ImageIcon(img));
   }
   
   public void getImagenes(String caso) {
@@ -118,6 +131,15 @@ public class Eview extends JFrame {
         g.fillRect(DEFAULT_WIDTH/2-65, DEFAULT_HEIGHT-215, 130, 107);
       }
     };
+    img_actual_panel = new JPanel() {
+      @Override
+      public void paintComponent(Graphics g) {
+        g.fillRect(0, 0, DEFAULT_IMAGEN_ACTUAL_WIDTH_BIG,
+                   DEFAULT_IMAGEN_ACTUAL_HEIGHT_BIG);
+      }
+    };
+    img_actual_panel.setSize(DEFAULT_IMAGEN_ACTUAL_WIDTH_BIG,
+                             DEFAULT_IMAGEN_ACTUAL_HEIGHT_BIG);
     chooser = new JFileChooser();
     chooser.setCurrentDirectory(new File("."));
     chooser.setDialogTitle("Eview: Escoge el Directorio de Imagenes");
@@ -185,6 +207,10 @@ public class Eview extends JFrame {
     for (JButton button: Buttons) panel.add(button);
     for (JLabel label: Labels) panel.add(label);
     menu.add(openItem);
+    panel.add(img_actual_panel);
+    int img_act_x = DEFAULT_WIDTH - 
+                    (DEFAULT_WIDTH - DEFAULT_IMAGEN_ACTUAL_WIDTH_BIG/2);
+    img_actual_panel.setLocation(img_act_x-17, 10);
     this.getContentPane().add(panel);
   }
   
@@ -205,20 +231,38 @@ public class Eview extends JFrame {
   public void addActionListeners() {
     btn_back.addKeyListener(new KeyListener() {
       public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_LEFT)
+        if (e.getKeyCode() == KeyEvent.VK_LEFT) 
           paintImages("back", getLabels());
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT)
-          paintImages("next", getLabels());
+        else if (e.getKeyCode() == KeyEvent.VK_RIGHT) 
+               paintImages("next", getLabels());
+        else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+               curr_width -= 20;
+               curr_height -= 14;
+               paintImagenResize(curr_width, curr_height);
+        } else if (e.getKeyCode() == KeyEvent.VK_UP) {
+                 curr_width += 20;
+                 curr_height += 14;
+                 paintImagenResize(curr_width, curr_height);
+        }   
       }
       public void keyReleased(KeyEvent e) {}
       public void keyTyped(KeyEvent e) {}
     });
     btn_next.addKeyListener(new KeyListener() {
       public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_LEFT)
+        if (e.getKeyCode() == KeyEvent.VK_LEFT) 
           paintImages("back", getLabels());
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT)
-          paintImages("next", getLabels());
+        else if (e.getKeyCode() == KeyEvent.VK_RIGHT) 
+               paintImages("next", getLabels());
+        else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+               curr_width -= 20;
+               curr_height -= 14;
+               paintImagenResize(curr_width, curr_height);
+        } else if (e.getKeyCode() == KeyEvent.VK_UP) {
+                 curr_width += 20;
+                 curr_height += 14;
+                 paintImagenResize(curr_width, curr_height);
+        }   
       }
       public void keyReleased(KeyEvent e) {}
       public void keyTyped(KeyEvent e) {}
