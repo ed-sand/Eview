@@ -98,16 +98,16 @@ public class Eview extends JFrame {
   
   public void paintImagenResize(int width, int height) {
     Image img = imagen_actual.getImagen().getImage().getScaledInstance(width, 
-    																																height,
-                                                                    Image.SCALE_SMOOTH);
+                                                                       height,
+                                                                       Image.SCALE_SMOOTH);
     lblBigImage.setIcon(new ImageIcon(img));
   }
   
   public void getImagenes(String caso) {
     if (image_dir.listFiles().length == 0 || caso.equals("NullImagenes")) {
       showMessageDialog(this, "No hay imagenes:\n" + 
-      												"    Tomare el directorio predetermindado.\n" +
-      												"    ( ./images/ )");
+                              "    Tomare el directorio predetermindado.\n" +
+                              "    ( ./images/ )");
       image_dir = new File("images/");
     }
     try {
