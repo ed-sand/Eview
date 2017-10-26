@@ -90,3 +90,7 @@ TODO: Agregar opcion para incluir mas directorios en el openMenuItem.
 TODO: Colocar el enfoque del zoom en el centro del imagen_actual_panel.
 
 TODO: Agregar funcionalidad para arrastrar la imagen dentro del imagen_actual_panel.
+
+TODO: check exceptions while zooming.
+
+TODO: Do something for large image loading 

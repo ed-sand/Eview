@@ -134,6 +134,7 @@ public class Eview extends JFrame {
     img_actual_panel = new JPanel() {
       @Override
       public void paintComponent(Graphics g) {
+        g.setColor(Color.black);
         g.fillRect(0, 0, DEFAULT_IMAGEN_ACTUAL_WIDTH_BIG,
                    DEFAULT_IMAGEN_ACTUAL_HEIGHT_BIG);
       }
