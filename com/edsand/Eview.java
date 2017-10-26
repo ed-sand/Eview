@@ -97,6 +97,10 @@ public class Eview extends JFrame {
   }
   
   public void paintImagenResize(int width, int height) {
+    if (width <= 0) {
+      curr_height = height = DEFAULT_IMAGEN_ACTUAL_HEIGHT_BIG;
+      curr_width = width = DEFAULT_IMAGEN_ACTUAL_WIDTH_BIG;
+    }
     Image img = imagen_actual.getImagen().getImage().getScaledInstance(width, 
                                                                        height,
                                                                        Image.SCALE_SMOOTH);
