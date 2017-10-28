@@ -16,6 +16,7 @@ import javax.swing.JFileChooser;
 import javax.imageio.ImageIO;
 import java.awt.Image;
 import java.awt.Graphics;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
@@ -104,11 +105,6 @@ public class Eview extends JFrame {
     Image img = imagen_actual.getImagen().getImage().getScaledInstance(width, 
                                                                        height,
                                                                        Image.SCALE_SMOOTH);
-    if (width < DEFAULT_IMAGEN_ACTUAL_WIDTH_BIG) {
-    
-    } else if (width > DEFAULT_IMAGEN_ACTUAL_WIDTH_BIG) {
-    
-    }
     lblBigImage.setIcon(new ImageIcon(img));
   }
   
@@ -197,9 +193,6 @@ public class Eview extends JFrame {
     int x_offset = 120;
     btn_back.setBounds(middle_x-110, DEFAULT_HEIGHT-100, 100, 50);
     btn_next.setBounds(middle_x+10, DEFAULT_HEIGHT-100, 100, 50);
-    Labels[0].setBounds(0, 0, 
-                        DEFAULT_IMAGEN_ACTUAL_WIDTH_BIG, 
-                        DEFAULT_IMAGEN_ACTUAL_HEIGHT_BIG);
     Labels[1].setBounds(act_x, act_y, DEFAULT_IMAGEN_THUMB_WIDTH,
                         DEFAULT_IMAGEN_THUMB_HEIGTH);
     for (int i = 2; i < 7; i++) {
@@ -214,8 +207,8 @@ public class Eview extends JFrame {
   public void addComponets(JButton Buttons[], JLabel Labels[]) {
     menuBar.add(menu);
     setJMenuBar(menuBar);
-    img_actual_panel.add(Labels[0]);
     panel.add(img_actual_panel);
+    img_actual_panel.add(Labels[0]);
     for (JButton button: Buttons) panel.add(button);
     for (int i = 1; i < Labels.length; i++) panel.add(Labels[i]);
     menu.add(openItem);
