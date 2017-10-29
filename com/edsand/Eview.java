@@ -158,7 +158,6 @@ public class Eview extends JFrame {
     else image_dir = new File("images/");
     lista = new Lista();
     btn_next = new JButton("Sig");
-    btn_next.setOpaque(true);
     btn_back = new JButton("Atras");
     menu = new JMenu("Archivo");
     menuBar = new JMenuBar();
@@ -194,8 +193,8 @@ public class Eview extends JFrame {
     int act_x = middle_x-50;
     int act_y = DEFAULT_HEIGHT-200;
     int x_offset = 120;
-    btn_back.setBounds(middle_x-110, DEFAULT_HEIGHT-100, 100, 50);
-    btn_next.setBounds(middle_x+10, DEFAULT_HEIGHT-100, 100, 50);
+    btn_back.setBounds(middle_x-110, DEFAULT_HEIGHT-105, 100, 25);
+    btn_next.setBounds(middle_x+10, DEFAULT_HEIGHT-105, 100, 25);
     Labels[1].setBounds(act_x, act_y, DEFAULT_IMAGEN_THUMB_WIDTH,
                         DEFAULT_IMAGEN_THUMB_HEIGTH);
     for (int i = 2; i < 7; i++) {
