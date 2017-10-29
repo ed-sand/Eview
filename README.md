@@ -77,8 +77,6 @@ TODO: Difuminar bordes de extremos.
 
 TODO: Tornar transparente el JFrame.
 
-TODO: Agregar icono de programa.
-
 TODO: Agregar zoom (under work).
 
 TODO: Agregar filtros.
