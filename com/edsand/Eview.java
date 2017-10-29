@@ -54,6 +54,9 @@ public class Eview extends JFrame {
 
   public Eview() {
     setTitle("Eview");
+    setIconImage(
+      new ImageIcon(getClass().getClassLoader().getResource("icon.png")).getImage()
+    );
     setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
     setVariables();
     JButton Buttons[] = {btn_back, btn_next};

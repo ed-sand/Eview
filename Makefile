@@ -8,7 +8,7 @@ jar:
 	javac com/edsand/Eview.java;
 	if [ ! -f Eview_RELEASE.1.0.1.jar ];\
 		then	jar cmvf META-INF/MANIFEST.MF Eview_RELEASE.1.0.1.jar\
-		               com/edsand/*.class;	\
+		               com/edsand/*.class icon.png;	\
 	fi
 	if [ ! -d build/ ];\
 		then	mkdir build/ &&	mkdir build/Eview/;\
@@ -20,7 +20,7 @@ run:
 	javac com/edsand/Eview.java;
 	if [ ! -f Eview_RELEASE.1.0.1.jar ];\
 		then	jar cmvf META-INF/MANIFEST.MF Eview_RELEASE.1.0.1.jar\
-		               com/edsand/*.class;	\
+		               com/edsand/*.class icon.png;	\
 	fi
 	if [ ! -d build/ ];\
 		then	mkdir build/ &&	mkdir build/Eview/;\
@@ -33,7 +33,7 @@ zip:
 	javac com/edsand/Eview.java;
 	if [ ! -f Eview_RELEASE.1.0.1.jar ];\
 		then	jar cmvf META-INF/MANIFEST.MF Eview_RELEASE.1.0.1.jar\
-		               com/edsand/*.class;	\
+		               com/edsand/*.class icon.png;	\
 	fi
 	if [ ! -d build/ ];\
 		then	mkdir build/ &&	mkdir build/Eview/;\
