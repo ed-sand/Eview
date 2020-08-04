@@ -1,4 +1,4 @@
-# Eview
+#Darkstone Eview
 Visor de imagenes en Java
 
 Uso la linea de comandos (Ubuntu Linux 17.04 x64) para compilar y ejecutar el 
